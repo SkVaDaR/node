@@ -1,5 +1,6 @@
 const { responseCodesEnum, responseMessages } = require('../constants');
 const { userService } = require('../services');
+const UserModel = require('../dataBase/User.model');
 
 module.exports = {
   getAllUsers: async (req, res, next) => {
@@ -14,7 +15,7 @@ module.exports = {
 
   createUser: async (req, res, next) => {
     try {
-      await userService.insertUser(req.body);
+      await UserModel.create(req.body);
 
       res.status(responseCodesEnum.CREATED).json(responseMessages.CREATED);
     } catch (e) {
