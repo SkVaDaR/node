@@ -45,9 +45,15 @@ module.exports = {
     }
   },
 
-  deleteUserById: (req, res) => {
-    const { user } = req;
+  deleteUserById: async (req, res, next) => {
+    try {
+      const { userId } = req.params;
 
-    res.status(responseCodesEnum.NO_CONTENT).json(responseMessages.DELETED);
+      await userService.deleteUser(userId);
+
+      res.status(responseCodesEnum.DELETED).json(responseMessages.DELETED);
+    } catch (e) {
+      next(e);
+    }
   }
 };
