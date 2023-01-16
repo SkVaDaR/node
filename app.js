@@ -20,7 +20,7 @@ app.listen(PORT, () => {
   console.log('app listen 3000');
 });
 
-function _handleErrors(err, req, res, next) {
+function _handleErrors(err, req, res) {
   res.status(err.status).json({
     message: err.message || 'Unknown error',
     customCode: err.code || 0
