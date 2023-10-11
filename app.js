@@ -38,5 +38,3 @@ function _mongooseConnector() {
   mongoose.connect('mongodb://localhost:27017/dataBase', { useNewUrlParser: true, useUnifiedTopology: true });
 }
 _mongooseConnector();
-
-// TODO UPDATE
